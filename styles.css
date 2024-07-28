@@ -1,0 +1,171 @@
+:root {
+    --primary-color: #00796b;
+    --background-light: #e0f7fa;
+    --background-dark: #121212;
+    --text-light: #ffffff;
+    --text-dark: #000000;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass-shadow: rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.mode-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.switch-label {
+    background: #ccc;
+    border-radius: 50px;
+    cursor: pointer;
+    height: 26px;
+    position: relative;
+    width: 50px;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.switch-label::after {
+    background: white;
+    border-radius: 50%;
+    content: '';
+    height: 20px;
+    left: 3px;
+    position: absolute;
+    top: 3px;
+    width: 20px;
+    transition: 0.3s;
+}
+
+input[type="checkbox"]:checked + .switch-label {
+    background: var(--primary-color);
+}
+
+input[type="checkbox"]:checked + .switch-label::after {
+    left: 27px;
+}
+
+.switch-label .fa-sun {
+    position: absolute;
+    left: 6px;
+    top: 3px;
+    color: #ffeb3b;
+    font-size: 1rem;
+    transition: opacity 0.3s;
+}
+
+.switch-label .fa-moon {
+    position: absolute;
+    right: 6px;
+    top: 3px;
+    color: #fff;
+    font-size: 1rem;
+    transition: opacity 0.3s;
+}
+
+input[type="checkbox"]:checked + .switch-label .fa-sun {
+    opacity: 0;
+}
+
+input[type="checkbox"]:checked + .switch-label .fa-moon {
+    opacity: 1;
+}
+
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 121, 107, 0.7);
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    width: 200px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #004d40;
+}
+
+.weather-info,
+.forecast {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--glass-shadow);
+    backdrop-filter: blur(10px);
+    max-width: 400px;
+    width: 100%;
+    transition: transform 0.3s ease, background 0.3s, color 0.3s;
+}
+
+.weather-info:hover,
+.forecast:hover {
+    transform: translateY(-10px);
+}
+
+body.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+}
+
+body.dark-mode h1 {
+    color: var(--text-light);
+}
+
+body.dark-mode button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+body.dark-mode .weather-info,
+body.dark-mode .forecast {
+    background: rgba(18, 18, 18, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
